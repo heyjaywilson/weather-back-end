@@ -10,11 +10,21 @@ const GMAP_API_URL =
   "https://maps.googleapis.com/maps/api/geocode/json?address=";
 const port = 3001;
 
+function ignoreFavicon(req, res, next) {
+  if (req.originalUrl === "/favicon.ico") {
+    res.status(204).json({ nope: true });
+  } else {
+    next();
+  }
+}
+
 app.all("/*", function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
+
+app.use(ignoreFavicon);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/:longlat", (req, res) => {
