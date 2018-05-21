@@ -8,7 +8,7 @@ const DARK_SKY_URL =
 
 const GMAP_API_URL =
   "https://maps.googleapis.com/maps/api/geocode/json?address=";
-const port = 3001;
+const port = process.env.PORT || 5000;
 
 function ignoreFavicon(req, res, next) {
   if (req.originalUrl === "/favicon.ico") {
