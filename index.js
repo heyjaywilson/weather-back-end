@@ -18,6 +18,7 @@ app.all("/*", function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/currenttemp/:longlat", (req, res) => {
+  console.log("getting current temp");
   let location = req.params.longlat;
   axios
     .get(DARK_SKY_URL + location)
@@ -30,6 +31,7 @@ app.get("/api/currenttemp/:longlat", (req, res) => {
 });
 
 app.get("/api/daily/:longlat", (req, res) => {
+  console.log("getting daily");
   let location = req.params.longlat + "?exclude=currently";
   axios
     .get(DARK_SKY_URL + location)
