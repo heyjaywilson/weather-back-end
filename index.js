@@ -23,6 +23,7 @@ app.all("/*", function(req, res, next) {
     "Access-Control-Allow-Origin",
     "http://weather-app.maeganwilson.com"
   );
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000/");
   res.header(
     "Access-Control-Allow-Origin",
     "https://weather-app.maeganwilson.com"
